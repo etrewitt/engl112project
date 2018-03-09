@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Water Usage Survey</title>
+		<link rel="stylesheet" type="text/css" href="project.css">
+	</head>
+	<body>
+		<header>
+			<h1>Water Usage Survey</h1>
+		</header>
+		<nav>
+      <ul>
+        <li><a id="home" class="home" href="http://students.engr.scu.edu/~etrewitt/water/">Home</a></li
+        ><li><a id="survey" class="current" href="survey.html">Survey</a></li
+        >
+				<!-- <li><a id="viewRequests" href="requests.php">Requests</a></li
+        ><li><a id="priorities" href="priorities.php">Course Priorities</a></li
+        ><li><a id="respondants" href="respondants.php">Respondants</a></li
+        ><li><a id="student_info" href="student_info.php">Student Info</a></li> -->
+      </ul>
+    </nav>
+		<div class="below-nav"></div>
+		<main>
+			<form method="post" action="survey_submit.php">
+				<fieldset>
+					<legend>Water usage</legend>
+					<label for="id">Student ID:</label>
+					<input type="text" name="id" value="", id="id"></input>
+					<label for="rlc">RLC:<label>
+					<select name="rlc" id="rlc">
+						<option value="">Select an RLC</option>
+						<option value="graham">Graham Hall</option>
+						<option value="campisi">Campisi Hall</option>
+						<option value="swig">Swig Hall</option>
+						<option value="casa">Casa Italiana</option>
+						<option value="dunne">Dunne Hall</option>
+						<option value="sobrato">Sobrato Hall</option>
+						<option value="sanfilippo">Sanfilippo Hall</option>
+						<option value="walsh">McLaughlin-Walsh Hall</option>
+						<option value="villas">University Villas</option>
+						<option value="other">Off-campus</option>
+					</select>
+					<fieldset>
+						<legend>How long do you typically shower for (minutes)?</legend>
+						<input id="showerTime" name="showerTime" type="number" value="0" min="0">
+						<legend>How frequently (per week)?</legend>
+						<input id="showerFreq" name="showerFreq" type="number" value="0" min="0">
+						<legend>Do you shower on- or off-campus?</legend>
+						<input type="radio" id="onCampusShower"
+						       name="shower" value="onCampus">
+				    <label for="onCampusShower">On-campus</label>
+				    <input type="radio" id="offCampusShower"
+						       name="shower" value="offCampus">
+				    <label for="offCampusShower">Off-campus</label>
+				    <input type="radio" id="bath"
+						       name="shower" value="bath">
+				    <label for="bath">Bathe</label>
+
+						<legend>Do you shave your legs and/or face?</legend>
+						<input type="checkbox" id="legs" name="shave" value="legs">
+						<label for="coding">Legs</label>
+						<input type="checkbox" id="face" name="shave" value="face">
+						<label for="coding">Face</label>
+					</fieldset>
+					<fieldset>
+						<legend>Do you turn the faucet off when brusing teeth?</legend>
+						<input type="radio" id="faucetOn"  name="faucet" value="on">
+				    <label for="faucetOn">On</label>
+				    <input type="radio" id="faucetOff" name="faucet" value="off">
+				    <label for="faucetOff">Off</label>
+						<legend>How many times a day do you wash your hands and/or face?</legend>
+						<input id="wash" name="wash" type="number" value="0" min="0">
+					</fieldset>
+
+				</fieldset>
+
+				<input type="submit" value="Submit">
+				<input type="reset" value="Reset">
+			</form>
+		</main>
+	</body>
+</html>
