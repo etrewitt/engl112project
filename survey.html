@@ -58,9 +58,11 @@
 				    <label for="bath">Bathe</label>
 
 						<legend>Do you shave your legs and/or face?</legend>
-						<input type="checkbox" id="legs" name="shave" value="legs">
+						<input type='hidden' id='legsHidden' value='No' name='shavelegs'>
+						<input type="checkbox" id="legs" name="shavelegs" value="legs">
 						<label for="coding">Legs</label>
-						<input type="checkbox" id="face" name="shave" value="face">
+						<input type='hidden' id='faceHidden' value='No' name='shaveface'>
+						<input type="checkbox" id="face" name="shaveface" value="face">
 						<label for="coding">Face</label>
 					</fieldset>
 					<fieldset>
@@ -71,6 +73,21 @@
 				    <label for="faucetOff">Off</label>
 						<legend>How many times a day do you wash your hands and/or face?</legend>
 						<input id="wash" name="wash" type="number" value="0" min="0">
+					</fieldset>
+					<fieldset>
+						<legend>How many glasses of water do you drink average daily? (Each glass about 12 ounces)</legend>
+						<input id="drink" name="drink" type="number" value="0" min="0">
+					</fieldset>
+					<fieldset>
+						<legend>How many times do you flush the toilet daily?</legend>
+						<input id="flush" name="flush" type="number" value="0" min="0">
+						<legend>How many times a week do you do a load of laundry?</legend>
+						<input id="laundry" name="laundry" type="number" value="0" min="0">
+						<legend>How many times a week do you run your dishwasher?</legend>
+						<input id="dishwasher" name="dishwasher" type="number" value="0" min="0">
+						<legend>Do you wash dishes by hand? If so, how long does it usually take you to wash them per day?</legend>
+						<input id="handwash" name="handwash" type="number" value="0" min="0">
+
 					</fieldset>
 
 				</fieldset>
