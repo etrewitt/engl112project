@@ -48,34 +48,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$laundry_used = 0;
 	$dishes_used = 0;
 
-	if ($shower == "onCampus") {
-		$shower_used += 1.5 * $time * $freq * 4;
-	} else {
-		$shower_used += 2 * $time * $freq * 4;
-	}
-	if ($shavelegs != "No") {
-		$shower_used += 1 * $freq * 4; // Here, I'm assuming that people shave with the same frequency as they shower
-	}
-	if ($shaveface != "No") {
-		$shower_used += 1 * $freq * 4; // Here, I'm assuming that people shave with the same frequency as they shower
-	}
-	if ($faucet == "faucetOn") {
-		$brush_used += 4 * 2 * 7 * 4; // 4 gallons * 2x per day * 7 days per week * 4 weeks
-	} else {
-		$brush_used += 0.5 * 2 * 7 * 4;
-	}
+	$shower_used = calcShower($shower, $time, $freq, $shavelegs, $shaveface);
+
+	$brush_used = calcBrush($faucet, $brush_used);
+
 	$water_used += $wash * 0.5 * 7 * 4;
 	$water_used += $drink * 3/32 * 7 * 4;
+
 	$flush_used += $flush * 3 * 7 * 4;
+
 	$laundry_used += $laundry * 25 * 4;
-	if ($dishwasher > 0) {
-		$dishes_used += $dishwasher * 6 * 4;
-	} else {
-		$dishes_used += $handwash * 1.5 * 7 * 4;
-	}
+
+	$dishes_used = dishesCalc($dishwasher, $dishes_used, $handwash);
 
 	$water_used += $shower_used + $brush_used + $flush_used + $laundry_used + $dishes_used;
-
 
 
 	printf("<p>You use %.2f gallons of water per month:</p>\n", $water_used);
@@ -87,14 +73,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	printf("\t<li>%.2f%% from washing dishes</li>\n", 100 * $dishes_used / $water_used);
 	print("</ul>\n");
 	exit;
+}
 
-	// // validate selection
-	// $valid = validateInput($id, $dept, $courseNo, $year, $quarter);
-  //
-	// if ($valid) {
-	// 	// add course
-	// 	addCourse($id, $dept, $courseNo, $year, $quarter);
-	// }
+function calcShower($shower, $time, $freq, $shavelegs, $shaveface) {
+	$shower_used = 0; // shower + shave imo
+	if ($shower == "onCampus") {
+		$shower_used += 1.5 * $time * $freq * 4;
+	} else {
+		$shower_used += 2 * $time * $freq * 4;
+	}
+	if ($shavelegs != "No") {
+		$shower_used += 1 * $freq * 4; // Here, I'm assuming that people shave with the same frequency as they shower
+	}
+	if ($shaveface != "No") {
+		$shower_used += 1 * $freq * 4; // Here, I'm assuming that people shave with the same frequency as they shower
+	}
+	return $shower_used;
+}
+
+function calcBrush($faucet, $brush_used) {
+	$brush_used = 0;
+	if ($faucet == "faucetOn") {
+		$brush_used += 4 * 2 * 7 * 4; // 4 gallons * 2x per day * 7 days per week * 4 weeks
+	} else {
+		$brush_used += 0.5 * 2 * 7 * 4;
+	}
+	return $brush_used;
+}
+
+function dishesCalc($dishwasher, $dishes_used, $handwash) {
+	$dishes_used = 0;
+	if ($dishwasher > 0) {
+		$dishes_used += $dishwasher * 6 * 4;
+	} else {
+		$dishes_used += $handwash * 1.5 * 7 * 4;
+	}
+	return $dishes_used;
 }
 
 // function validateInput($id, $dept, $courseNo, $year, $quarter) {
