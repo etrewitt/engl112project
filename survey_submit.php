@@ -79,11 +79,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function calcShower($shower, $time, $freq, $shavelegs, $shaveface) {
-	$shower_used = 0; // for both shower & shave
+	$shower_used = 0; 	// for both shower & shave
 	if ($shower == "onCampus") {
 		$shower_used += 1.5 * $time * $freq * 4;
-	} else {
+	} else if ($shower == "offCampus") {
 		$shower_used += 2 * $time * $freq * 4;
+	} else {
+		// according to the EPA, a full bath is 70 gallons
+		$shower_used += 70 * $freq * 4;
 	}
 	// Here, I'm assuming that people shave with the same frequency as they shower
 	if ($shavelegs != "No") {
@@ -133,7 +136,7 @@ function recordData($POST, $water_used, $shower_used, $brush_used, $flush_used, 
 
 	$idhash = md5($id);
 
-	$conn = oci_connect( /* blank */, /* blank */, '//dbserver.engr.scu.edu/db11g' );
+	$conn = oci_connect( 'etrewitt', 'BI13sqlpwd', '//dbserver.engr.scu.edu/db11g' );
 	if (!$conn) {
 		print "<br> connection failed:";
 		exit;
@@ -153,7 +156,7 @@ function recordData($POST, $water_used, $shower_used, $brush_used, $flush_used, 
 }
 
 function compareData($water_used, $shower_used, $brush_used, $flush_used, $laundry_used, $dishes_used) {
-	$conn = oci_connect( /* blank */, /* blank */, '//dbserver.engr.scu.edu/db11g' );
+	$conn = oci_connect( 'etrewitt', 'BI13sqlpwd', '//dbserver.engr.scu.edu/db11g' );
 	if (!$conn) {
 		print "<br> connection failed:";
 		exit;
