@@ -11,7 +11,7 @@ body {
 
 header {
   margin: 0px 10px 0px 10px;
-  background: #6c6c6c;
+  background: #0dafaf;
 }
 header h1 {
   text-align: center;
@@ -22,7 +22,7 @@ header h1 {
 
 .below-nav {
   margin: 0px 10px 20px 10px;
-  background: #6c6c6c;
+  background: #0dafaf;
   height: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -31,7 +31,7 @@ header h1 {
 nav {
   margin:     0px 0px 0px 0px;
   padding:    0% 20% 0% 5%;
-  background: #3c3c3c;
+  background: #607d8b;
 }
 nav ul {
   margin:  0;
@@ -51,7 +51,7 @@ nav li a {
   display: block;
   font-size: 10pt;
 
-  border-left: 1px dotted #bbb;
+  border-left: 1px dotted #fff;
   border-radius: 5px;
   color: #fff;
   text-decoration: none;
@@ -60,15 +60,15 @@ nav li a.home {
   border-left: 0px;
 }
 nav li a:hover {
-  background: #a70000 ;
-  color: #d7a0a0;
+  background: #c1c1c1 ;
+  color: #007275;
 }
 nav a.current {
-  background-color: #808080;
-  color: #d70000;
+  background-color: #fff;
+  color: #0dafaf;
 }
 nav a.current:hover {
-  background-color: #808080 !important;
+  background-color: #d1d1d1 !important;
 }
 
 nav li ul li a {
@@ -142,7 +142,7 @@ footer {
   bottom: 0;
   width: 100%;
   height: 280px;
-  background-color:#3c3c3c;
+  background-color:#607d8b;
 }
 
 
@@ -170,7 +170,7 @@ footer {
   border-radius: 10px;
   margin-left: 20px;
   padding: 10px;
-  background: #4c4c4c;
+  background: #0dafaf;
 }
 
 .img-circle {
