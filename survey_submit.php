@@ -14,10 +14,6 @@
 				<li><a id="home" class="home" href="http://students.engr.scu.edu/~etrewitt/water/">Home</a></li
         ><li><a id="survey" class="current" href="survey.html">Survey</a></li
         >
-				<!-- <li><a id="viewRequests" href="requests.php">Requests</a></li
-        ><li><a id="priorities" href="priorities.php">Course Priorities</a></li
-        ><li><a id="respondants" href="respondants.php">Respondants</a></li
-        ><li><a id="student_info" href="student_info.php">Student Info</a></li> -->
       </ul>
     </nav>
 		<div class="below-nav"></div>
@@ -42,11 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$handwash   = $_POST['handwash'];
 
 	$water_used = 0;
-	$shower_used = 0; // shower + shave imo
+	$shower_used = 0; // shower + shave
 	$brush_used = 0;
 	$flush_used = 0;
 	$laundry_used = 0;
 	$dishes_used = 0;
+
+	// Calculations were determined based on publicly available data,
+	// sourced in our references. Months are assumed to be 4 weeks long.
 
 	$shower_used = calcShower($shower, $time, $freq, $shavelegs, $shaveface);
 
@@ -136,7 +135,7 @@ function recordData($POST, $water_used, $shower_used, $brush_used, $flush_used, 
 
 	$idhash = md5($id);
 
-	$conn = oci_connect( 'etrewitt', 'BI13sqlpwd', '//dbserver.engr.scu.edu/db11g' );
+	$conn = oci_connect( /* blank */, /* blank */, '//dbserver.engr.scu.edu/db11g' );
 	if (!$conn) {
 		print "<br> connection failed:";
 		exit;
@@ -156,7 +155,7 @@ function recordData($POST, $water_used, $shower_used, $brush_used, $flush_used, 
 }
 
 function compareData($water_used, $shower_used, $brush_used, $flush_used, $laundry_used, $dishes_used) {
-	$conn = oci_connect( 'etrewitt', 'BI13sqlpwd', '//dbserver.engr.scu.edu/db11g' );
+	$conn = oci_connect( /* blank */, /* blank */, '//dbserver.engr.scu.edu/db11g' );
 	if (!$conn) {
 		print "<br> connection failed:";
 		exit;
